@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Large Language Model Explainability for Planning Lunar Rover Trajectories under Uncertainty.">
+  <meta name="description"
+    content="Large Language Model Explainability for Planning Lunar Rover Trajectories under Uncertainty.">
   <link rel="icon" type="image/png" sizes="128x128" href="./static/images/favicon.png">
   <title>LLM Explainability for Lunar Rover Planning</title>
   <style>
@@ -16,11 +18,30 @@
       font-family: Arial, Helvetica, sans-serif;
       color: var(--ink);
     }
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body { margin: 0; line-height: 1.6; }
-    .container { width: min(960px, calc(100% - 2.5rem)); margin: 0 auto; }
-    header { padding: 4.5rem 0 2.5rem; text-align: center; }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      line-height: 1.6;
+    }
+
+    .container {
+      width: min(960px, calc(100% - 2.5rem));
+      margin: 0 auto;
+    }
+
+    header {
+      padding: 4.5rem 0 2.5rem;
+      text-align: center;
+    }
+
     h1 {
       max-width: 950px;
       margin: 0 auto 1.4rem;
@@ -28,12 +49,41 @@
       line-height: 1.12;
       letter-spacing: -0.035em;
     }
-    .authors { margin: 0 auto 0.65rem; font-size: 1.12rem; line-height: 1.8; }
-    .authors a, .affiliations a { color: var(--accent); text-decoration: none; }
-    .authors a:hover, .affiliations a:hover { text-decoration: underline; }
-    .affiliations { color: var(--muted); font-size: 0.98rem; }
-    .venue { margin: 0.8rem 0 1.5rem; font-weight: 700; }
-    .links { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.7rem; }
+
+    .authors {
+      margin: 0 auto 0.65rem;
+      font-size: 1.12rem;
+      line-height: 1.8;
+    }
+
+    .authors a,
+    .affiliations a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .authors a:hover,
+    .affiliations a:hover {
+      text-decoration: underline;
+    }
+
+    .affiliations {
+      color: var(--muted);
+      font-size: 0.98rem;
+    }
+
+    .venue {
+      margin: 0.8rem 0 1.5rem;
+      font-weight: 700;
+    }
+
+    .links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.7rem;
+    }
+
     .button {
       display: inline-flex;
       align-items: center;
@@ -47,30 +97,97 @@
       text-decoration: none;
       transition: transform 150ms ease, background 150ms ease;
     }
-    .button:hover { background: var(--accent); transform: translateY(-1px); }
-    .button.disabled { opacity: 0.4; cursor: default; pointer-events: none; }
-    .button svg { width: 17px; height: 17px; fill: currentColor; }
-    .hero { padding: 1rem 0 3.5rem; text-align: center; }
+
+    .button:hover {
+      background: var(--accent);
+      transform: translateY(-1px);
+    }
+
+    .button.disabled {
+      opacity: 0.4;
+      cursor: default;
+      pointer-events: none;
+    }
+
+    .button svg {
+      width: 17px;
+      height: 17px;
+      fill: currentColor;
+    }
+
+    .hero {
+      padding: 1rem 0 3.5rem;
+      text-align: center;
+    }
+
     .hero-figure {
       padding: 1rem;
       border: 1px solid var(--line);
       border-radius: 1rem;
       background: #fafafa;
     }
-    .hero-figure img { display: block; width: 100%; border-radius: 0.6rem; }
-    .caption { max-width: 760px; margin: 1rem auto 0; color: var(--muted); font-size: 0.93rem; }
-    section.content { padding: 3.5rem 0; border-top: 1px solid var(--line); }
-    h2 { margin: 0 0 1.25rem; text-align: center; font-size: 2rem; letter-spacing: -0.02em; }
-    .prose { max-width: 800px; margin: 0 auto; text-align: justify; }
-    .results-figure { max-width: 900px; margin: 2rem auto; }
-    .results-figure img { display: block; width: 100%; }
-    footer { padding: 2.5rem 0; border-top: 1px solid var(--line); color: var(--muted); text-align: center; font-size: 0.9rem; }
+
+    .hero-figure img {
+      display: block;
+      width: 100%;
+      border-radius: 0.6rem;
+    }
+
+    .caption {
+      max-width: 760px;
+      margin: 1rem auto 0;
+      color: var(--muted);
+      font-size: 0.93rem;
+    }
+
+    section.content {
+      padding: 3.5rem 0;
+      border-top: 1px solid var(--line);
+    }
+
+    h2 {
+      margin: 0 0 1.25rem;
+      text-align: center;
+      font-size: 2rem;
+      letter-spacing: -0.02em;
+    }
+
+    .prose {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: justify;
+    }
+
+    .results-figure {
+      max-width: 900px;
+      margin: 2rem auto;
+    }
+
+    .results-figure img {
+      display: block;
+      width: 100%;
+    }
+
+    footer {
+      padding: 2.5rem 0;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      text-align: center;
+      font-size: 0.9rem;
+    }
+
     @media (max-width: 700px) {
-      header { padding-top: 3rem; }
-      .prose { text-align: left; }
+      header {
+        padding-top: 3rem;
+      }
+
+      .prose {
+        text-align: left;
+      }
     }
   </style>
 </head>
+
 <body>
   <header class="container">
     <h1>Large Language Model Explainability for Planning Lunar Rover Trajectories under Uncertainty</h1>
@@ -87,11 +204,17 @@
     <p class="venue">📌 ISPaRo 2026</p>
     <nav class="links" aria-label="Paper resources">
       <a class="button" href="./paper.pdf">
-        <svg viewBox="0 0 384 512" aria-hidden="true"><path d="M64 0C28.7 0 0 28.7 0 64v384c0 35.3 28.7 64 64 64h256c35.3 0 64-28.7 64-64V160H256c-17.7 0-32-14.3-32-32V0H64zm192 0v128h128L256 0zM96 280c0-13.3 10.7-24 24-24h144c13.3 0 24 10.7 24 24s-10.7 24-24 24H120c-13.3 0-24-10.7-24-24zm0 96c0-13.3 10.7-24 24-24h144c13.3 0 24 10.7 24 24s-10.7 24-24 24H120c-13.3 0-24-10.7-24-24z"/></svg>
+        <svg viewBox="0 0 384 512" aria-hidden="true">
+          <path
+            d="M64 0C28.7 0 0 28.7 0 64v384c0 35.3 28.7 64 64 64h256c35.3 0 64-28.7 64-64V160H256c-17.7 0-32-14.3-32-32V0H64zm192 0v128h128L256 0zM96 280c0-13.3 10.7-24 24-24h144c13.3 0 24 10.7 24 24s-10.7 24-24 24H120c-13.3 0-24-10.7-24-24zm0 96c0-13.3 10.7-24 24-24h144c13.3 0 24 10.7 24 24s-10.7 24-24 24H120c-13.3 0-24-10.7-24-24z" />
+        </svg>
         Paper
       </a>
       <a class="button" href="https://github.com/michelleho-24/Rover_LLM_Explainability">
-        <svg viewBox="0 0 496 512" aria-hidden="true"><path d="M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4-70 15-84.7-29.8-84.7-29.8-11.4-29.1-27.8-36.6-27.8-36.6-22.9-15.7 1.6-15.4 1.6-15.4 24.9 2 38.6 25.8 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.8-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.7 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8z"/></svg>
+        <svg viewBox="0 0 496 512" aria-hidden="true">
+          <path
+            d="M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4-70 15-84.7-29.8-84.7-29.8-11.4-29.1-27.8-36.6-27.8-36.6-22.9-15.7 1.6-15.4 1.6-15.4 24.9 2 38.6 25.8 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.8-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.7 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8z" />
+        </svg>
         Code
       </a>
     </nav>
@@ -100,7 +223,8 @@
   <main>
     <section class="hero container">
       <div class="hero-figure">
-        <img src="./static/images/isparo-hero.png" alt="System overview showing a science-team query, the LLM assistant, simulator tools, retrieval, and a grounded response">
+        <img src="./static/images/isparo-hero.png"
+          alt="System overview showing a science-team query, the LLM assistant, simulator tools, retrieval, and a grounded response">
       </div>
       <p class="caption">End-to-end flow of our LLM-based mission planning assistant on an example query.</p>
     </section>
@@ -108,29 +232,67 @@
     <section class="content">
       <div class="container">
         <h2>Abstract</h2>
-        <p class="prose">Planning planetary rover trajectories under probabilistic uncertainty is a multi-objective optimization problem that science teams currently iteratively solve and verify by hand. This process becomes impractical when timelines and constraints frequently shift throughout the mission planning phase. Sampling-based planners such as Monte Carlo Tree Search can speed up this process, but their outputs do not preserve traceability to the science objectives that justify each plan, which the science team needs to verify. We propose an interactive assistant based on a large language model (LLM) that can explain planner trajectories using domain vocabulary and re-run the planner under user-specified conditions to compare alternatives. Our framework pairs a simulator inspired by the NASA Volatiles Investigating Polar Exploration Rover (VIPER) mission with a ReAct queryable interface that calls curated action tools and retrieval functions. Experiments show that 90.9% of the assistant's responses are faithful to the planner's outputs, a nearly 65% improvement over zero-shot prompting of the same LLM without tool access, demonstrating the potential for trustworthy explainability of uncertainty-aware traverses with an LLM-based system.</p>
+        <p class="prose">Planning planetary rover trajectories under probabilistic uncertainty is a multi-objective
+          optimization problem that science teams currently iteratively solve and verify by hand. This process becomes
+          impractical when timelines and constraints frequently shift throughout the mission planning phase.
+          Sampling-based planners such as Monte Carlo Tree Search can speed up this process, but their outputs do not
+          preserve traceability to the science objectives that justify each plan, which the science team needs to
+          verify. We propose an interactive assistant based on a large language model (LLM) that can explain planner
+          trajectories using domain vocabulary and re-run the planner under user-specified conditions to compare
+          alternatives. Our framework pairs a simulator inspired by the NASA Volatiles Investigating Polar Exploration
+          Rover (VIPER) mission with a ReAct queryable interface that calls curated action tools and retrieval
+          functions. Experiments show that 90.9% of the assistant's responses are faithful to the planner's outputs, a
+          nearly 65% improvement over zero-shot prompting of the same LLM without tool access, demonstrating the
+          potential for trustworthy explainability of uncertainty-aware traverses with an LLM-based system.</p>
       </div>
     </section>
 
     <section class="content">
       <div class="container">
         <h2>Approach</h2>
-        <p class="prose">We formulate our VIPER-inspired trajectory planning problem within a science station as a sequential decision-making problem, and develop an MCTS-based planner that uses a simulator grounded in mission requirements and constraints. We then develop an LLM-based framework for providing accurate explanations of the planning results with a retrieval layer and tool catalog for a ReAct module. The LLM assistant does not modify the underlying MDP or override the planner. It can only run the planner on behalf of the user with their specified conditions or explain the results, without telling the user what they should do.</p>
+        <p class="prose">We formulate our VIPER-inspired trajectory planning problem within a science station as a
+          sequential decision-making problem, and develop an MCTS-based planner that uses a simulator grounded in
+          mission requirements and constraints. We then develop an LLM-based framework for providing accurate
+          explanations of the planning results with a retrieval layer and tool catalog for a ReAct module. The LLM
+          assistant does not modify the underlying MDP or override the planner. It can only run the planner on behalf of
+          the user with their specified conditions or explain the results, without telling the user what they should do.
+        </p>
       </div>
     </section>
 
     <section class="content">
       <div class="container">
         <h2>Experiments</h2>
-        <p class="prose">We construct a query bank of 115 science team questions consisting of plan comparisons, feasibility, mission-document and source code lookup, and ambiguous or edge cases. The full assistant's 90.9% faithfulness is a nearly 65% improvement over the 26.7% zero-shot baseline.</p>
+        <p class="prose">We construct a query bank of 115 science team questions consisting of plan comparisons,
+          feasibility, mission-document and source code lookup, and ambiguous or edge cases. The full assistant's 90.9%
+          faithfulness is a nearly 65% improvement over the 26.7% zero-shot baseline.</p>
         <figure class="results-figure">
-          <img src="./static/images/figure-3.png" alt="Seven panels showing planner behavior under different mission scenarios">
-          <figcaption class="caption">Planner behavior demonstrated on different scenarios. All panels share the same MDP formulation, number of drill sites selected from 10 candidates, and MCTS hyperparameters. They use the same legend from Figure 2 with blue diamonds as POIs. (a) The original plan takes 20.15 hours without prospecting. (b) A +12 h shift in start time results in a new plan due to different SMGs. (c) 200 Monte Carlo rollouts of (a) under SMG uncertainty, with 99.5% finishing in 24 hours. (d) We added 2 POIs, finishing in 21.7 h. (e) We reran the planner with a new ice map. (f) Enforcing a non-optimal site ordering increased the mission time to 24.45 hours, exceeding the limit. (g) We replanned under new science station boundaries.</figcaption>
+          <img src="./static/images/figure-3.png"
+            alt="Seven panels showing planner behavior under different mission scenarios">
+          <figcaption class="caption">Planner behavior demonstrated on different scenarios. All panels share the same
+            MDP formulation, number of drill sites selected from 10 candidates, and MCTS hyperparameters. They use the
+            same legend from Figure 2 with blue diamonds as POIs. (a) The original plan takes 20.15 hours without
+            prospecting. (b) A +12 h shift in start time results in a new plan due to different SMGs. (c) 200 Monte
+            Carlo rollouts of (a) under SMG uncertainty, with 99.5% finishing in 24 hours. (d) We added 2 POIs,
+            finishing in 21.7 h. (e) We reran the planner with a new ice map. (f) Enforcing a non-optimal site ordering
+            increased the mission time to 24.45 hours, exceeding the limit. (g) We replanned under new science station
+            boundaries.</figcaption>
         </figure>
+        <p class="prose">We present an LLM-based framework for explaining lunar rover trajectories planned under
+          uncertainty, with an MCTS planner accompanied by a VIPER-inspired simulator that includes probabilistic SMGs,
+          a 24-hour mission budget, and exploration vs. exploitation tradeoffs. The full framework with action tools and
+          retrieval outperforms the zero-shot baseline, with a 90.9% accuracy rate of responses outperforming zero-shot
+          by nearly 65%. Our work has several
+          opportunities for future improvement. We can extend the MDP to handle partial observability and incorporate
+          active uncertainty reduction during trajectory planning. Additionally, we would like to test other solvers and
+          use cases beyond MCTS and VIPER SST.</p>
       </div>
     </section>
   </main>
 
-  <footer><div class="container">Large Language Model Explainability for Lunar Rover Planning · ISPaRo 2026</div></footer>
+  <footer>
+    <div class="container">Large Language Model Explainability for Lunar Rover Planning · ISPaRo 2026</div>
+  </footer>
 </body>
+
 </html>
